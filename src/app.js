@@ -1,6 +1,7 @@
 'use strict';
 
 var express = require('express');
+var parser = require('body-parser');
 var router = require('./api');
 
 var app = express();
@@ -14,6 +15,7 @@ require('./seed');
 app.use('/',express.static('public'));
 
 app.use('/api', router);
+app.use(parser.json());
 
 app.listen(3000, function(){
     console.log("We are listening on port 3000");
